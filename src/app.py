@@ -3,7 +3,7 @@ import plotly.express as px
 from dash import Dash, dcc, html, Input, Output
 
 # Loading the dataset
-df = pd.read_csv(r"C:\Users\Qwon\Desktop\Dev\linkedin_projects\remitances\clsep.csv")
+df = pd.read_csv("https://github.com/samy-migwi/Kenya-remittance-dashboard/blob/d0406cba7621315e044221c0d1a25fe193737ba4/clsep.csv")
 
 # Melting the DataFrame for easier plotting
 df_melted = df.melt(id_vars="Region/Country", var_name="Month_Year", value_name="Value")
@@ -176,4 +176,4 @@ def update_dashboard(selected_year):
 
 # app run intialization
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(debug=True, host='0.0.0.0', port=8050)
