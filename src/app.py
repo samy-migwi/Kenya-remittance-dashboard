@@ -2,15 +2,16 @@ import pandas as pd
 import plotly.express as px
 from dash import Dash, dcc, html, Input, Output
 
-# Load the dataset
+# Loading the dataset
 df = pd.read_csv(r"C:\Users\Qwon\Desktop\Dev\linkedin_projects\remitances\clsep.csv")
 
-# Melt the DataFrame for easier plotting
+# Melting the DataFrame for easier plotting
 df_melted = df.melt(id_vars="Region/Country", var_name="Month_Year", value_name="Value")
 df_melted['Year'] = df_melted['Month_Year'].str.extract(r'_(\d{2})$').astype(int) + 2000
 
 # Initialize the Dash app
 app = Dash(__name__)
+server = app.server
 
 # Layout of the app
 app.layout = html.Div([
@@ -35,7 +36,7 @@ app.layout = html.Div([
     ], style={"display": "flex", "justify-content": "space-between"}),
 
     dcc.Graph(id="choropleth"),
-    # Updated Footer with Detailed Data Handling Information
+    # Footer para
 html.Div([
     html.P(
         "This dashboard is a result of my passion for data analysis and visualization. "
@@ -125,7 +126,7 @@ def update_dashboard(selected_year):
         height=800
     )
 
-    # Sunburst plot 1
+    # Sunburst for contry
     sunburst_fig1 = px.sunburst(
         filtered_data,
         path=["Region/Country", "Month_Year"],
@@ -139,7 +140,7 @@ def update_dashboard(selected_year):
     )
     sunburst_fig1.update_traces(textinfo="label+value+percent entry")
 
-    # Sunburst plot 2
+    # Sunburstfor months
     sunburst_fig2 = px.sunburst(
         filtered_data.sort_values(by="Month_Year"),
         path=["Year", "Month_Year", "Region/Country"],
@@ -173,6 +174,6 @@ def update_dashboard(selected_year):
 
     return line_fig, bar_fig, sunburst_fig1, sunburst_fig2, choropleth_fig
 
-# Run the app
+# app run intialization
 if __name__ == "__main__":
     app.run_server(debug=True)
