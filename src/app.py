@@ -10,7 +10,7 @@ from dash_bootstrap_templates import load_figure_template
 #dt=pd.read_csv(r"C:\Users\KMC\Desktop\ds\remitances\Kenya-remittance-dashboard\data\processed\region_apr25.csv")
 # for github 
 df=pd.read_csv("https://raw.githubusercontent.com/samy-migwi/Kenya-remittance-dashboard/main/data/processed/apr25.csv")
-dt=df = pd.read_csv("https://raw.githubusercontent.com/samy-migwi/Kenya-remittance-dashboard/main/data/processed/region_apr25.csv")
+dt=pd.read_csv("https://raw.githubusercontent.com/samy-migwi/Kenya-remittance-dashboard/main/data/processed/region_apr25.csv")
 
 # Data preprocessing
 df_melted = df.melt(id_vars="Region/Country", var_name="Month_Year", value_name="Value")
@@ -734,9 +734,6 @@ def update_dashboard(selected_month):
         sunburst_country,  # country-focused sunburst more polishing need here
         sunburst_month    # Month-focused sunburst
     )
-    
-import os
-print("Current working directory:", os.getcwd())
 
 if __name__ == "__main__":
     #I should remove _server....  host='0.0.0.0',port=8050 for local development
