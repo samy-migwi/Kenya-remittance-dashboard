@@ -5,9 +5,12 @@ from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import load_figure_template
 
-# Load datasets
-df=pd.read_csv(r"C:\Users\KMC\Desktop\ds\remitances\Kenya-remittance-dashboard\data\processed\apr25.csv")
-dt=pd.read_csv(r"C:\Users\KMC\Desktop\ds\remitances\Kenya-remittance-dashboard\data\processed\region_apr25.csv")
+# for local host
+#df=pd.read_csv(r"C:\Users\KMC\Desktop\ds\remitances\Kenya-remittance-dashboard\data\processed\apr25.csv")
+#dt=pd.read_csv(r"C:\Users\KMC\Desktop\ds\remitances\Kenya-remittance-dashboard\data\processed\region_apr25.csv")
+# for github 
+df=pd.read_csv("https://raw.githubusercontent.com/samy-migwi/Kenya-remittance-dashboard/main/data/processed/apr25.csv")
+dt=df = pd.read_csv("https://raw.githubusercontent.com/samy-migwi/Kenya-remittance-dashboard/main/data/processed/region_apr25.csv")
 
 # Data preprocessing
 df_melted = df.melt(id_vars="Region/Country", var_name="Month_Year", value_name="Value")
@@ -23,14 +26,14 @@ KENYA_THEME = {
     "accent": "#FFC72C",    # Yellow (for highlights)
 }
 
-# Initialize the Dash app with Bootstrap and custom theme
+# Initialize the Dash
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
 
-# Load Bootstrap template for Plotly figures
+# Load Bootstrap
 load_figure_template("bootstrap")
 
-# Custom CSS styles
+# Custom CSS
 CUSTOM_STYLES = {
     "header": {
         "background": f"linear-gradient(135deg, {KENYA_THEME['primary']} 0%, {KENYA_THEME['secondary']} 100%)",
@@ -192,7 +195,7 @@ def create_change_indicator(current_month="Jan_23", comparison_type="month"):
         plot_bgcolor=KENYA_THEME["light"],
         paper_bgcolor=KENYA_THEME["light"],
         margin=dict(l=10, r=10, t=50, b=10),
-        height=180,  # Slightly taller to accommodate extra info
+        height=180,  
         font={"family": "Arial"}
     )
     
@@ -263,7 +266,7 @@ def create_trend_chart(current_month="Feb_23"):
             marker=dict(symbol="circle", size=6)
         ))
     
-    # Add top 5 countries (skip U.S.A if already plotted)
+    # Add top 5 countries (skip U.S.A if already plotted since it making my diagram not to be infomative)
     for _, row in top_5.iterrows():
         country = row["Region/Country"]
         if country == "U.S.A":
@@ -351,7 +354,7 @@ def create_sunburst_charts(current_month="Jan_23"):
     sunburst_fig1.update_traces(
         textinfo="label+value+percent entry",
         insidetextorientation='radial',
-        textfont=dict(size=18, family="Arial", color="black"),  # Larger text
+        textfont=dict(size=18, family="Arial", color="black"),  # larger text
         marker=dict(line=dict(color='white', width=1.5)),  # Thicker borders
         hovertemplate='<b>%{label}</b><br>Amount: $%{value:,}<br>%{percentEntry:.1%} of total<extra></extra>'
     )
@@ -379,14 +382,14 @@ def create_sunburst_charts(current_month="Jan_23"):
     # Standard layout for both charts
     for fig in [sunburst_fig1, sunburst_fig2]:
         fig.update_layout(
-            uniformtext=dict(minsize=16, mode='hide'),  # Prevent text hiding
-            title_font=dict(size=20, family="Arial"),  # Larger titles
+            uniformtext=dict(minsize=16, mode='hide'),  # should prevent text hiding
+            title_font=dict(size=20, family="Arial"),  # larger titles
             coloraxis_colorbar=dict(
                 title='USD Amount',
                 thickness=20,
                 len=0.6
             ),
-            margin=dict(l=50, r=50, t=100, b=50)  # Adequate spacing
+            margin=dict(l=50, r=50, t=100, b=50)  # adequate spacing
         )
     
     return sunburst_fig1, sunburst_fig2
@@ -718,7 +721,7 @@ def update_dashboard(selected_month):
     trend_chart = create_trend_chart(selected_month)
     choropleth_fig = create_choropleth_map(selected_month)
     bar_fig = create_bar_chart(selected_month)
-    sunburst_country, sunburst_month = create_sunburst_charts(selected_month)  # Unpack both figures
+    sunburst_country, sunburst_month = create_sunburst_charts(selected_month)  # unpack both figures we need some improvement here on my sunbust chart
     
     return (
         total_fig, 
@@ -728,7 +731,7 @@ def update_dashboard(selected_month):
         trend_chart, 
         choropleth_fig, 
         bar_fig,
-        sunburst_country,  # Country-focused sunburst
+        sunburst_country,  # country-focused sunburst more polishing need here
         sunburst_month    # Month-focused sunburst
     )
     
@@ -736,4 +739,5 @@ import os
 print("Current working directory:", os.getcwd())
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    #I should remove _server....  host='0.0.0.0',port=8050 for local development
+    app.run_server(debug=True,host='0.0.0.0',port=8050)
