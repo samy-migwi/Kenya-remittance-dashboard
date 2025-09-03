@@ -397,7 +397,7 @@ def create_sunburst_charts(current_month="Jan_23"):
 # App layout (same as before)
 app.layout = dbc.Container(
     fluid=True,
-    style={"padding": "2rem", "backgroundColor": "#01030E"},
+    style={"padding": "2rem", "backgroundColor": "#fff8e1"},
     children=[
         # Header Section
         dbc.Row(
