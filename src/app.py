@@ -524,13 +524,7 @@ app.layout = dbc.Container(
                     dbc.Card(
                         dbc.CardBody(
                             [
-                                html.Img(
-                                    src=r"C:\Users\KMC\Desktop\ds\remitances\Kenya-remittance-dashboard\src\icons\budget.png", 
-                                    style={
-                                        "height": "200px", 
-                                        "marginRight": "100px",
-                                        "verticalAlign": "middle"
-                                    }),
+                               
                                 html.H5(
                                     "TOP CHANGES",
                                     className="card-title",
