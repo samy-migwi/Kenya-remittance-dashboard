@@ -1,10 +1,9 @@
-Here's an updated version of your README file, incorporating information from your GitHub repository and relevant data sources:
-
----
 
 # Kenya Remittance Dashboard 🌍📊
 
 ![Kenya Remittance Dashboard](https://kenya-remittance-dashboard.onrender.com)
+<img width="1814" height="924" alt="Screenshot From 2025-09-03 20-30-27" src="https://github.com/user-attachments/assets/88426e14-fa0b-4274-a5a0-fe454f1bcf76" />
+
 
 ## Overview
 
@@ -59,12 +58,15 @@ The data used in this project is sourced from the Central Bank of Kenya's [Diasp
 
 ```plaintext
 Kenya-remittance-dashboard/
-├── app.py                  # Main application script
-├── assets/                 # CSS and assets for styling
-├── data/                   # Data files
-├── notebooks/              # Jupyter notebooks for data analysis
-├── requirements.txt        # Python dependencies
-└── README.md               # Project documentation
+├── assets                  # Main application script
+├── data                 # CSS and assets for styling
+├── notebook                  # Data files
+├── src/assets            # I cointain the icons 
+├── src/app.py        # dashboard app engine
+├── README.md        #  readme and know who we are .
+├── render.yaml        # yaml file for the render server
+├── requirements.txt       # Python requirements
+└── sampletest.py              # The very first version of the dashbaord i keep it for later reference
 ```
 
 ## Key Insights
@@ -88,4 +90,5 @@ For questions or feedback, feel free to reach out via email: [samy.migwi002@gmai
 This project is licensed under the [MIT License](LICENSE).
 
 ---
+
 
