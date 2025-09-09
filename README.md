@@ -7,7 +7,8 @@
 
 ## Overview
 
-The **Kenya Remittance Dashboard** is an interactive web application that visualizes remittance inflows to Kenya. This project showcases data science skills in data cleaning, analysis, and visualization, providing insights into remittance trends over time.
+The **Kenya Remittance Dashboard** is an interactive web application that visualizes remittance inflows to Kenya. This project showcases my data science skills in data cleaning, analysis, and visualization.
+The dashboard provides insights into remittance trends over time.
 
 ## Features
 
@@ -90,5 +91,6 @@ For questions or feedback, feel free to reach out via email: [samy.migwi002@gmai
 This project is licensed under the [MIT License](LICENSE).
 
 ---
+
 
 
