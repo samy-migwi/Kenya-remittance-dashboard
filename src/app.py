@@ -9,8 +9,8 @@ from dash_bootstrap_templates import load_figure_template
 #df=pd.read_csv(r"C:\Users\KMC\Desktop\ds\remitances\Kenya-remittance-dashboard\data\processed\apr25.csv")
 #dt=pd.read_csv(r"C:\Users\KMC\Desktop\ds\remitances\Kenya-remittance-dashboard\data\processed\region_apr25.csv")
 # for github 
-df=pd.read_csv("https://raw.githubusercontent.com/samy-migwi/Kenya-remittance-dashboard/main/data/processed/apr25.csv")
-dt=pd.read_csv("https://raw.githubusercontent.com/samy-migwi/Kenya-remittance-dashboard/main/data/processed/region_apr25.csv")
+df=pd.read_csv("https://raw.githubusercontent.com/samy-migwi/Kenya-remittance-dashboard/main/data/processed/sep25.csv")
+dt=pd.read_csv("https://raw.githubusercontent.com/samy-migwi/Kenya-remittance-dashboard/main/data/processed/region_sep25.csv")
 
 # Data preprocessing
 df_melted = df.melt(id_vars="Region/Country", var_name="Month_Year", value_name="Value")
