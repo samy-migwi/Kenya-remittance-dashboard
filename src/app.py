@@ -266,7 +266,7 @@ def create_trend_chart(current_month="Feb_23"):
             marker=dict(symbol="circle", size=6)
         ))
     
-    # Add top 5 countries (skip U.S.A if already plotted since it making my diagram not to be infomative)
+    #  top 5 countries (skip U.S.A already plotted since it making my diagram not to be infomative)
     for _, row in top_5.iterrows():
         country = row["Region/Country"]
         if country == "U.S.A":
@@ -672,7 +672,7 @@ app.layout = dbc.Container(
                                         className="mb-1"
                                     ),
                                     html.P(
-                                        "© 2025 All Rights Reserved",
+                                        "© 2026 All Rights Reserved",
                                         className="text-muted small"
                                     )
                                 ],
